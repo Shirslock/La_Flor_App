@@ -104,4 +104,49 @@ Public Class FormVerProductos
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Me.Close()
     End Sub
+
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+
+        ' Verificar si se ha seleccionado una fila en el DataGridView
+        If DataGridView1.SelectedRows.Count > 0 Then
+            ' Obtener el ID del producto seleccionado (suponiendo que el ID esté en la primera columna)
+            Dim idProducto As Integer = CInt(DataGridView1.SelectedRows(0).Cells("IDProducto").Value)
+
+            ' Establecer la cadena de conexión
+            Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
+
+            ' Consulta SQL para eliminar el producto de la base de datos
+            Dim query As String = "DELETE FROM productos WHERE id_producto = @IDProducto"
+
+            Using connection As New SqlConnection(connectionString)
+                connection.Open()
+
+                Using command As New SqlCommand(query, connection)
+                    ' Agregar el parámetro del ID del producto
+                    command.Parameters.AddWithValue("@IDProducto", idProducto)
+
+                    ' Ejecutar la consulta de eliminación
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+
+                    If rowsAffected > 0 Then
+                        ' El producto se eliminó con éxito de la base de datos
+                        MessageBox.Show("El producto se eliminó correctamente de la base de datos.")
+
+                        ' Actualizar el DataGridView para reflejar los cambios
+                        ActualizarDataGridView()
+                    Else
+                        ' No se realizó la eliminación en la base de datos
+                        MessageBox.Show("No se pudo eliminar el producto de la base de datos.")
+                    End If
+                End Using
+            End Using
+        Else
+            MessageBox.Show("Seleccione un producto para eliminar.")
+        End If
+
+
+    End Sub
+
+
 End Class

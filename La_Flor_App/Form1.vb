@@ -24,10 +24,11 @@ Public Class LoginForm
                 ' Verificar si el usuario y la contraseña son válidos
                 If count > 0 Then
                     ' Usuario autenticado, puedes permitir el acceso a la aplicación
-                    MessageBox.Show("Inicio de sesión exitoso.")
+                    MessageBox.Show("Credenciales Validas! Ingresando!.")
 
                     Dim formPrincipal As New FormPrincipal()
                     formPrincipal.Show()
+
 
                     ' Aquí puedes abrir el formulario principal o realizar otras acciones
                 Else
@@ -43,6 +44,11 @@ Public Class LoginForm
 
     Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MessageBox.Show("Bienvenido a la app Floreria, usuario:admin pass:admin")
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.Close()
 
     End Sub
 End Class
