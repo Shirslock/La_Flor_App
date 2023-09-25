@@ -59,6 +59,7 @@ Partial Class FormGestionarVentas
         '
         'btnAceptar
         '
+        Me.btnAceptar.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnAceptar.Location = New System.Drawing.Point(12, 201)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(75, 37)
@@ -125,15 +126,17 @@ Partial Class FormGestionarVentas
         '
         'btnVerHistorial
         '
+        Me.btnVerHistorial.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnVerHistorial.Location = New System.Drawing.Point(12, 325)
         Me.btnVerHistorial.Name = "btnVerHistorial"
-        Me.btnVerHistorial.Size = New System.Drawing.Size(75, 38)
+        Me.btnVerHistorial.Size = New System.Drawing.Size(75, 47)
         Me.btnVerHistorial.TabIndex = 7
         Me.btnVerHistorial.Text = "Ver Historial"
         Me.btnVerHistorial.UseVisualStyleBackColor = True
         '
         'Button1
         '
+        Me.Button1.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Button1.Location = New System.Drawing.Point(12, 415)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)

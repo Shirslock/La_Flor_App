@@ -24,6 +24,7 @@ Partial Class FormConsultaPrecio
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormConsultaPrecio))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.dgvConsultarPrecio = New System.Windows.Forms.DataGridView()
         Me.btnModificarPrecio = New System.Windows.Forms.Button()
         Me.btnConsultarPrecio = New System.Windows.Forms.Button()
@@ -31,7 +32,6 @@ Partial Class FormConsultaPrecio
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.txtPrecioNuevo = New System.Windows.Forms.TextBox()
         Me.btnOk = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvConsultarPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -45,9 +45,20 @@ Partial Class FormConsultaPrecio
         Me.Panel1.Size = New System.Drawing.Size(795, 51)
         Me.Panel1.TabIndex = 0
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Comic Sans MS", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(281, 7)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(244, 27)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "CONSULTA DE PRECIOS"
+        '
         'dgvConsultarPrecio
         '
         Me.dgvConsultarPrecio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvConsultarPrecio.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dgvConsultarPrecio.Location = New System.Drawing.Point(12, 76)
         Me.dgvConsultarPrecio.Name = "dgvConsultarPrecio"
         Me.dgvConsultarPrecio.RowTemplate.Height = 25
@@ -56,6 +67,7 @@ Partial Class FormConsultaPrecio
         '
         'btnModificarPrecio
         '
+        Me.btnModificarPrecio.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnModificarPrecio.Location = New System.Drawing.Point(13, 345)
         Me.btnModificarPrecio.Name = "btnModificarPrecio"
         Me.btnModificarPrecio.Size = New System.Drawing.Size(106, 23)
@@ -65,6 +77,7 @@ Partial Class FormConsultaPrecio
         '
         'btnConsultarPrecio
         '
+        Me.btnConsultarPrecio.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnConsultarPrecio.Location = New System.Drawing.Point(12, 296)
         Me.btnConsultarPrecio.Name = "btnConsultarPrecio"
         Me.btnConsultarPrecio.Size = New System.Drawing.Size(107, 23)
@@ -74,6 +87,7 @@ Partial Class FormConsultaPrecio
         '
         'Button3
         '
+        Me.Button3.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Button3.Location = New System.Drawing.Point(12, 415)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
@@ -99,22 +113,13 @@ Partial Class FormConsultaPrecio
         '
         'btnOk
         '
+        Me.btnOk.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnOk.Location = New System.Drawing.Point(245, 344)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.Size = New System.Drawing.Size(38, 23)
         Me.btnOk.TabIndex = 7
         Me.btnOk.Text = "OK"
         Me.btnOk.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Comic Sans MS", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(281, 7)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(244, 27)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "CONSULTA DE PRECIOS"
         '
         'FormConsultaPrecio
         '

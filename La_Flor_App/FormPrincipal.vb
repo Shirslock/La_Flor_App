@@ -16,7 +16,8 @@
     End Sub
 
     Private Sub CerrarSesionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesionToolStripMenuItem.Click
-        Me.Close()
+        Application.Exit()
+
     End Sub
 
     Private Sub ConsultarPrecioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarPrecioToolStripMenuItem.Click

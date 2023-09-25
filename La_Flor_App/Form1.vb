@@ -27,6 +27,7 @@ Public Class LoginForm
                     MessageBox.Show("Credenciales Validas! Ingresando!.")
 
                     Dim formPrincipal As New FormPrincipal()
+                    Me.Hide()
                     formPrincipal.Show()
 
 

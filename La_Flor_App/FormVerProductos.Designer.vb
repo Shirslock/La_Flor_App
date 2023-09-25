@@ -44,6 +44,7 @@ Partial Class FormVerProductos
         '
         'btnModificar
         '
+        Me.btnModificar.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnModificar.Location = New System.Drawing.Point(115, 387)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(85, 41)
@@ -72,6 +73,7 @@ Partial Class FormVerProductos
         '
         'btnEliminar
         '
+        Me.btnEliminar.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnEliminar.Location = New System.Drawing.Point(221, 387)
         Me.btnEliminar.Name = "btnEliminar"
         Me.btnEliminar.Size = New System.Drawing.Size(85, 41)
@@ -81,6 +83,7 @@ Partial Class FormVerProductos
         '
         'btnSalir
         '
+        Me.btnSalir.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnSalir.Location = New System.Drawing.Point(692, 387)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(85, 27)
@@ -90,6 +93,7 @@ Partial Class FormVerProductos
         '
         'btnAgregarProducto
         '
+        Me.btnAgregarProducto.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.btnAgregarProducto.Location = New System.Drawing.Point(11, 387)
         Me.btnAgregarProducto.Name = "btnAgregarProducto"
         Me.btnAgregarProducto.Size = New System.Drawing.Size(85, 41)
@@ -101,7 +105,7 @@ Partial Class FormVerProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.MintCream
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.btnAgregarProducto)
         Me.Controls.Add(Me.btnSalir)
