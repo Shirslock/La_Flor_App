@@ -28,6 +28,7 @@ Partial Class FormAgregarProducto
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
@@ -36,7 +37,6 @@ Partial Class FormAgregarProducto
         Me.txtStock = New System.Windows.Forms.TextBox()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -89,6 +89,16 @@ Partial Class FormAgregarProducto
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(798, 55)
         Me.Panel1.TabIndex = 4
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Comic Sans MS", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label6.Location = New System.Drawing.Point(241, 6)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(320, 30)
+        Me.Label6.TabIndex = 0
+        Me.Label6.Text = "AGREGAR NUEVO PRODUCTO"
         '
         'Label5
         '
@@ -154,16 +164,6 @@ Partial Class FormAgregarProducto
         Me.btnSalir.TabIndex = 12
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Comic Sans MS", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label6.Location = New System.Drawing.Point(241, 6)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(320, 30)
-        Me.Label6.TabIndex = 0
-        Me.Label6.Text = "AGREGAR NUEVO PRODUCTO"
         '
         'Panel2
         '
