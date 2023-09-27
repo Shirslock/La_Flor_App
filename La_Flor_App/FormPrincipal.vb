@@ -26,4 +26,10 @@
         formConsultarPrecio.Show()
 
     End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        MessageBox.Show("APP creada por GIL CRISTIAN ALBERTO, para el final de PROGRAMACION III")
+
+
+    End Sub
 End Class

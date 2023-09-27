@@ -32,7 +32,7 @@ Partial Class FormGestionarVentas
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnVerHistorial = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -73,7 +73,7 @@ Partial Class FormGestionarVentas
         Me.DataGridViewStock.Location = New System.Drawing.Point(306, 106)
         Me.DataGridViewStock.Name = "DataGridViewStock"
         Me.DataGridViewStock.RowTemplate.Height = 25
-        Me.DataGridViewStock.Size = New System.Drawing.Size(482, 118)
+        Me.DataGridViewStock.Size = New System.Drawing.Size(319, 104)
         Me.DataGridViewStock.TabIndex = 3
         '
         'Panel1
@@ -134,15 +134,15 @@ Partial Class FormGestionarVentas
         Me.btnVerHistorial.Text = "Ver Historial"
         Me.btnVerHistorial.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnSalir
         '
-        Me.Button1.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button1.Location = New System.Drawing.Point(12, 415)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Salir"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnSalir.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnSalir.Location = New System.Drawing.Point(12, 415)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 8
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
         '
         'Label3
         '
@@ -168,7 +168,7 @@ Partial Class FormGestionarVentas
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Comic Sans MS", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point)
-        Me.Label5.Location = New System.Drawing.Point(468, 80)
+        Me.Label5.Location = New System.Drawing.Point(413, 80)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(137, 23)
         Me.Label5.TabIndex = 11
@@ -183,7 +183,7 @@ Partial Class FormGestionarVentas
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnVerHistorial)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.DataGridViewVentas)
@@ -215,7 +215,7 @@ Partial Class FormGestionarVentas
     Friend WithEvents btnVerHistorial As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnSalir As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label

@@ -59,7 +59,7 @@ Partial Class FormPrincipal
         'CerrarSesionToolStripMenuItem
         '
         Me.CerrarSesionToolStripMenuItem.Name = "CerrarSesionToolStripMenuItem"
-        Me.CerrarSesionToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
+        Me.CerrarSesionToolStripMenuItem.Size = New System.Drawing.Size(173, 24)
         Me.CerrarSesionToolStripMenuItem.Text = "Cerrar Sesion"
         '
         'GestionarProductosToolStripMenuItem

@@ -7,6 +7,7 @@ Public Class FormVerProductos
     Private Productos As New List(Of Producto)
 
     Private Sub FormVerProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         ' Establecer la cadena de conexión
         Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
 
@@ -40,21 +41,31 @@ Public Class FormVerProductos
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
 
+
         ' Verificar si se ha seleccionado un producto en el DataGridView
         If DataGridView1.SelectedRows.Count > 0 Then
+
             ' Obtener el índice de la fila seleccionada
             Dim rowIndex As Integer = DataGridView1.SelectedRows(0).Index
 
-            ' Obtener el producto seleccionado
-            Dim productoSeleccionado As Producto = Productos(rowIndex)
+            ' Verificar si el índice es válido
+            If rowIndex >= 0 AndAlso rowIndex < Productos.Count Then
+                ' Obtener el producto seleccionado
+                Dim productoSeleccionado As Producto = Productos(rowIndex)
 
-            ' Crear una instancia del formulario "FormModificarProducto" y pasar el producto seleccionado
-            Dim modificarForm As New FormModificarProducto(productoSeleccionado)
+                ' Crear una instancia del formulario "FormModificarProducto" y pasar el producto seleccionado
+                Dim modificarForm As New FormModificarProducto(productoSeleccionado)
 
-            ' Mostrar el formulario "FormModificarProducto" en modo de diálogo
-            If modificarForm.ShowDialog() = DialogResult.OK Then
-                ' Actualizar la información del producto en el DataGridView si es necesario
-
+                ' Mostrar el formulario "FormModificarProducto" en modo de diálogo
+                If modificarForm.ShowDialog() = DialogResult.OK Then
+                    ' Actualizar la información del producto en el DataGridView si es necesario
+                    ActualizarDataGridView()
+                    Dim reaparecer As New FormVerProductos()
+                    Me.Close()
+                    reaparecer.ShowDialog()
+                End If
+            Else
+                MessageBox.Show("El índice de la fila seleccionada no es válido.")
             End If
         Else
             MessageBox.Show("Seleccione un producto para modificar.")
@@ -72,7 +83,13 @@ Public Class FormVerProductos
         If agregarProductoForm.ShowDialog() = DialogResult.OK Then
             ' El usuario ha agregado un nuevo producto, actualiza el DataGridView
             ActualizarDataGridView()
+            Dim reaparecer As New FormVerProductos()
+            Me.Close()
+            reaparecer.ShowDialog()
+
+
         End If
+
     End Sub
 
     'Me actualiza el DataGridView
@@ -108,12 +125,14 @@ Public Class FormVerProductos
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
 
-        ' Verificar si se ha seleccionado una fila en el DataGridView
+
+        ' Verifica si se ha seleccionado una fila en el DataGridView
         If DataGridView1.SelectedRows.Count > 0 Then
-            ' Obtener el ID del producto seleccionado (suponiendo que el ID esté en la primera columna)
+
+            ' Obtiene el ID del producto seleccionado (suponiendo que el ID esté en la primera columna)
             Dim idProducto As Integer = CInt(DataGridView1.SelectedRows(0).Cells("IDProducto").Value)
 
-            ' Establecer la cadena de conexión
+            ' Establece la cadena de conexión
             Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
 
             ' Consulta SQL para eliminar el producto de la base de datos
@@ -123,20 +142,25 @@ Public Class FormVerProductos
                 connection.Open()
 
                 Using command As New SqlCommand(query, connection)
-                    ' Agregar el parámetro del ID del producto
+                    ' Agrega el parámetro del ID del producto
                     command.Parameters.AddWithValue("@IDProducto", idProducto)
 
-                    ' Ejecutar la consulta de eliminación
+                    ' Ejecuta la consulta de eliminación
                     Dim rowsAffected As Integer = command.ExecuteNonQuery()
 
                     If rowsAffected > 0 Then
-                        ' El producto se eliminó con éxito de la base de datos
+
+
                         MessageBox.Show("El producto se eliminó correctamente de la base de datos.")
 
-                        ' Actualizar el DataGridView para reflejar los cambios
+                        ' Actualiza el DataGridView para reflejar los cambios
                         ActualizarDataGridView()
+                        Dim reaparecer As New FormVerProductos()
+                        Me.Close()
+                        reaparecer.ShowDialog()
+
                     Else
-                        ' No se realizó la eliminación en la base de datos
+
                         MessageBox.Show("No se pudo eliminar el producto de la base de datos.")
                     End If
                 End Using
@@ -145,8 +169,19 @@ Public Class FormVerProductos
             MessageBox.Show("Seleccione un producto para eliminar.")
         End If
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim reaparecer As New FormVerProductos()
+        Me.Close()
+        reaparecer.ShowDialog()
+
 
     End Sub
+
+
+
+
 
 
 End Class

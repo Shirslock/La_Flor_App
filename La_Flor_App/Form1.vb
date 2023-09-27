@@ -1,29 +1,32 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class LoginForm
+
+
     Private Sub btnIngresar_Click(sender As Object, e As EventArgs) Handles btnIngresar.Click
         Dim usuario As String = txtUsuario.Text
         Dim contraseña As String = txtContraseña.Text
 
-        ' Establecer la cadena de conexión
-        Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
 
-        ' Consulta SQL para verificar el usuario y la contraseña
-        Dim query As String = "SELECT COUNT(*) FROM Usuarios WHERE nombre_usuario = @Usuario AND contraseña = @Contraseña"
+        'Cadena de conexion <<<<<<<
+        Dim rutaDeConexion As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
 
-        Using connection As New SqlConnection(connectionString)
-            connection.Open()
+        ' Consulta SQL para verificar el usuario y la contraseña <<<<<<
+        Dim consulta As String = "SELECT COUNT(*) FROM Usuarios WHERE nombre_usuario = @Usuario AND contraseña = @Contraseña"
 
-            Using command As New SqlCommand(query, connection)
+        Using conexion As New SqlConnection(rutaDeConexion)
+            conexion.Open()
+
+            Using command As New SqlCommand(consulta, conexion)
                 command.Parameters.AddWithValue("@Usuario", usuario)
                 command.Parameters.AddWithValue("@Contraseña", contraseña)
 
-                ' Ejecutar la consulta y obtener el resultado
-                Dim count As Integer = CInt(command.ExecuteScalar())
+                ' Ejecuta la consulta y obteniene el resultado
+                Dim contador As Integer = CInt(command.ExecuteScalar())
 
-                ' Verificar si el usuario y la contraseña son válidos
-                If count > 0 Then
-                    ' Usuario autenticado, puedes permitir el acceso a la aplicación
+                ' Verifica si el usuario y la contraseña son válidos
+                If contador > 0 Then
+                    ' Si el usuario es valido....
                     MessageBox.Show("Credenciales Validas! Ingresando!.")
 
                     Dim formPrincipal As New FormPrincipal()
@@ -31,9 +34,9 @@ Public Class LoginForm
                     formPrincipal.Show()
 
 
-                    ' Aquí puedes abrir el formulario principal o realizar otras acciones
+
                 Else
-                    ' Usuario o contraseña incorrectos
+                    'Si el usuario es incorrecto...
                     MessageBox.Show("Nombre de usuario o contraseña incorrectos.")
                 End If
             End Using
