@@ -46,14 +46,14 @@ ALTER TABLE ventas
 ADD CONSTRAINT ventas_fk_id_producto FOREIGN KEY (id_producto) REFERENCES productos(id_producto);
 
 
--- Crear una tabla de Usuarios
+-- Crea una tabla de Usuarios
 CREATE TABLE Usuarios (
   id_usuario INT PRIMARY KEY IDENTITY(1,1),
   nombre_usuario VARCHAR(50) NOT NULL,
   contraseña VARCHAR(50) NOT NULL
 );
 
--- Insertar el usuario de administrador
+-- Inserta el usuario de administrador
 INSERT INTO Usuarios (nombre_usuario, contraseña)
 VALUES ('admin', 'admin');
 
