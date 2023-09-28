@@ -158,7 +158,7 @@ Partial Class FormAgregarProducto
         'btnSalir
         '
         Me.btnSalir.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnSalir.Location = New System.Drawing.Point(238, 403)
+        Me.btnSalir.Location = New System.Drawing.Point(242, 403)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 12
