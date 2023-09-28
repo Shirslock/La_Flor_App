@@ -34,11 +34,11 @@ Public Class FormConsultaPrecio
         ' Verifica si se ha seleccionado una fila en el DataGridView<<<<<<<
         If dgvConsultarPrecio.SelectedRows.Count > 0 Then
             ' Obtiene el índice de la fila seleccionada<<<<<<
-            Dim rowIndex As Integer = dgvConsultarPrecio.SelectedRows(0).Index
+            Dim indiceFilas As Integer = dgvConsultarPrecio.SelectedRows(0).Index
 
             ' Obtiene el nombre y precio del producto seleccionado<<<<<<
-            Dim nombreProducto As String = dgvConsultarPrecio.Rows(rowIndex).Cells("nombre").Value.ToString()
-            Dim precioProducto As Decimal = CDec(dgvConsultarPrecio.Rows(rowIndex).Cells("precio").Value)
+            Dim nombreProducto As String = dgvConsultarPrecio.Rows(indiceFilas).Cells("nombre").Value.ToString()
+            Dim precioProducto As Decimal = CDec(dgvConsultarPrecio.Rows(indiceFilas).Cells("precio").Value)
 
             ' Muestra el nombre y precio del producto en un TextBox<<<<<
             txtPrecioNuevo.Text = precioProducto.ToString()

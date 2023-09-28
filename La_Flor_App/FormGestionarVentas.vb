@@ -9,7 +9,7 @@ Public Class FormGestionarVentas
     Private Productos As New List(Of Producto)
 
     Private Sub FormGestionarVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Llena el ComboBox con los productos disponibles
+        ' Llena el ComboBox con los productos disponibles<<<<<<<<<<
         CargarProductos()
         cbProductoSeleccionado.DisplayMember = "Nombre"
 
@@ -20,19 +20,19 @@ Public Class FormGestionarVentas
     End Sub
 
     Private Sub CargarProductos()
-        ' Establecer la cadena de conexión
-        Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
+        ' Establece la cadena de conexión<<<<<<<<<<
+        Dim rutaDeConexion As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
 
-        ' Consulta SQL para obtener los productos disponibles
-        Dim query As String = "SELECT id_producto, nombre FROM productos WHERE stock > 0"
+        ' Consulta SQL para obtener los productos disponibles<<<<<<<<<
+        Dim consulta As String = "SELECT id_producto, nombre FROM productos WHERE stock > 0"
 
-        Using connection As New SqlConnection(connectionString)
+        Using connection As New SqlConnection(rutaDeConexion)
             connection.Open()
 
-            Using command As New SqlCommand(query, connection)
-                Using reader As SqlDataReader = command.ExecuteReader()
+            Using comando As New SqlCommand(consulta, connection)
+                Using reader As SqlDataReader = comando.ExecuteReader()
                     While reader.Read()
-                        ' Agregar productos al ComboBox
+                        ' Agrega productos al ComboBox<<<<<<<<<<
                         Dim producto As New Producto()
                         producto.IDProducto = CInt(reader("id_producto"))
                         producto.Nombre = reader("nombre").ToString()
@@ -75,15 +75,15 @@ Public Class FormGestionarVentas
     End Sub
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-        ' Verificar si se ha seleccionado un producto
+        ' Verifica si se ha seleccionado un producto<<<<<<<<<<<<<
         If cbProductoSeleccionado.SelectedIndex >= 0 Then
-            ' Obtener el producto seleccionado
+            ' Obtiene el producto seleccionado<<<<<<<<<<<<
             Dim productoSeleccionado As Producto = DirectCast(cbProductoSeleccionado.SelectedItem, Producto)
 
-            ' Obtener la cantidad vendida
+            ' Obtiene la cantidad vendida<<<<<<<<<<<
             Dim cantidadVendida As Integer
             If Integer.TryParse(txtCantidadVendida.Text, cantidadVendida) AndAlso cantidadVendida > 0 Then
-                ' Registrar la venta y actualizar el stock
+                ' Registra la venta y actualiza el stock<<<<<<<<
                 RegistrarVenta(productoSeleccionado, cantidadVendida)
             Else
                 MessageBox.Show("Ingrese una cantidad válida.")
@@ -96,12 +96,12 @@ Public Class FormGestionarVentas
 
     Private Sub RegistrarVenta(producto As Producto, cantidadVendida As Integer)
         ' Establecer la cadena de conexión
-        Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
+        Dim rutaDeConexion As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
 
-        Using connection As New SqlConnection(connectionString)
-            connection.Open()
+        Using conexion As New SqlConnection(rutaDeConexion)
+            conexion.Open()
 
-            Using transaction As SqlTransaction = connection.BeginTransaction()
+            Using transaction As SqlTransaction = conexion.BeginTransaction()
                 Try
                     ' Calcular el total de la venta
                     Dim totalVenta As Decimal = cantidadVendida * producto.Precio
@@ -109,21 +109,21 @@ Public Class FormGestionarVentas
                     ' Registrar la venta en la tabla ventas
                     Dim queryVenta As String = "INSERT INTO ventas (fecha_venta, total_venta, id_producto, cantidad, precio_unitario) VALUES (@FechaVenta, @TotalVenta, @IDProducto, @Cantidad, @PrecioUnitario)"
 
-                    Using commandVenta As New SqlCommand(queryVenta, connection, transaction)
-                        commandVenta.Parameters.AddWithValue("@FechaVenta", DateTime.Now)
-                        commandVenta.Parameters.AddWithValue("@TotalVenta", totalVenta)
-                        commandVenta.Parameters.AddWithValue("@IDProducto", producto.IDProducto)
-                        commandVenta.Parameters.AddWithValue("@Cantidad", cantidadVendida)
-                        commandVenta.Parameters.AddWithValue("@PrecioUnitario", producto.Precio)
+                    Using commandoVenta As New SqlCommand(queryVenta, conexion, transaction)
+                        commandoVenta.Parameters.AddWithValue("@FechaVenta", DateTime.Now)
+                        commandoVenta.Parameters.AddWithValue("@TotalVenta", totalVenta)
+                        commandoVenta.Parameters.AddWithValue("@IDProducto", producto.IDProducto)
+                        commandoVenta.Parameters.AddWithValue("@Cantidad", cantidadVendida)
+                        commandoVenta.Parameters.AddWithValue("@PrecioUnitario", producto.Precio)
 
                         ' Ejecutar la consulta de venta
-                        commandVenta.ExecuteNonQuery()
+                        commandoVenta.ExecuteNonQuery()
                     End Using
 
                     ' Actualizar el stock del producto
-                    Dim queryActualizarStock As String = "UPDATE productos SET stock = stock - @CantidadVendida WHERE id_producto = @IDProducto"
+                    Dim consultaActualizarStock As String = "UPDATE productos SET stock = stock - @CantidadVendida WHERE id_producto = @IDProducto"
 
-                    Using commandActualizarStock As New SqlCommand(queryActualizarStock, connection, transaction)
+                    Using commandActualizarStock As New SqlCommand(consultaActualizarStock, conexion, transaction)
                         commandActualizarStock.Parameters.AddWithValue("@CantidadVendida", cantidadVendida)
                         commandActualizarStock.Parameters.AddWithValue("@IDProducto", producto.IDProducto)
 
@@ -152,17 +152,17 @@ Public Class FormGestionarVentas
     End Sub
 
     Private Sub ActualizarDataGridView()
-        ' Establecer la cadena de conexión
-        Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
+        ' Establece la cadena de conexión a la base de datos
+        Dim rutaDeConexion As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
 
         ' Consulta SQL para obtener los productos
-        Dim query As String = "SELECT id_producto, nombre, descripcion, categoria, precio, stock FROM productos"
+        Dim consulta As String = "SELECT id_producto, nombre, descripcion, categoria, precio, stock FROM productos"
 
-        Using connection As New SqlConnection(connectionString)
-            connection.Open()
+        Using conexion As New SqlConnection(rutaDeConexion)
+            conexion.Open()
 
-            Using command As New SqlCommand(query, connection)
-                Using adapter As New SqlDataAdapter(command)
+            Using commando As New SqlCommand(consulta, conexion)
+                Using adapter As New SqlDataAdapter(commando)
                     ' Crear un nuevo DataTable para los datos de productos
                     Dim dt As New DataTable()
 

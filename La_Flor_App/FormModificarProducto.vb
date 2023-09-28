@@ -15,7 +15,7 @@ Public Class FormModificarProducto
 
     ' Evento Load para cargar los datos del producto en los controles
     Private Sub FormModificarProducto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Mostrar los datos del producto en los controles
+        ' Muestra los datos del producto en los controles
         txtNombre.Text = ProductoModificar.Nombre
         txtDescripcion.Text = ProductoModificar.Descripcion
         txtCategoria.Text = ProductoModificar.Categoria
@@ -25,14 +25,14 @@ Public Class FormModificarProducto
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
-        ' Actualizar los datos del producto con los valores ingresados por el usuario
+        ' Actualiza los datos del producto con los valores ingresados por el usuario
         ProductoModificar.Nombre = txtNombre.Text
         ProductoModificar.Descripcion = txtDescripcion.Text
         ProductoModificar.Categoria = txtCategoria.Text
         ProductoModificar.Precio = Decimal.Parse(txtPrecio.Text)
         ProductoModificar.Stock = Integer.Parse(txtStock.Text)
 
-        ' Establecer la cadena de conexión
+        ' Establece la cadena de conexión a la base de datos
         Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
 
         ' Consulta SQL para actualizar los datos del producto en la base de datos
@@ -42,7 +42,7 @@ Public Class FormModificarProducto
             connection.Open()
 
             Using command As New SqlCommand(query, connection)
-                ' Agregar los parámetros de la consulta
+                ' Agrega los parámetros de la consulta
                 command.Parameters.AddWithValue("@Nombre", ProductoModificar.Nombre)
                 command.Parameters.AddWithValue("@Descripcion", ProductoModificar.Descripcion)
                 command.Parameters.AddWithValue("@Categoria", ProductoModificar.Categoria)
@@ -50,20 +50,20 @@ Public Class FormModificarProducto
                 command.Parameters.AddWithValue("@Stock", ProductoModificar.Stock)
                 command.Parameters.AddWithValue("@IDProducto", ProductoModificar.IDProducto)
 
-                ' Ejecutar la consulta de actualización
+                ' Ejecuta la consulta de actualización
                 Dim rowsAffected As Integer = command.ExecuteNonQuery()
 
                 If rowsAffected > 0 Then
-                    ' Los datos se actualizaron con éxito en la base de datos
+
                     MessageBox.Show("Los cambios se guardaron correctamente en la base de datos.")
                 Else
-                    ' No se realizaron cambios en la base de datos
+
                     MessageBox.Show("No se pudieron guardar los cambios en la base de datos.")
                 End If
             End Using
         End Using
 
-        ' Cierra el formulario con DialogResult.OK para indicar que se guardaron cambios
+
         DialogResult = DialogResult.OK
         Close()
     End Sub

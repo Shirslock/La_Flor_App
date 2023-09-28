@@ -20,7 +20,7 @@ Public Class FormVerProductos
             Using command As New SqlCommand(query, connection)
                 Using reader As SqlDataReader = command.ExecuteReader()
                     While reader.Read()
-                        ' Crear un objeto Producto y agregarlo a la lista
+                        ' Crea un objeto Producto y lo agrega a la lista
                         Dim producto As New Producto()
                         producto.IDProducto = reader("id_producto").ToString()
                         producto.Nombre = reader("nombre").ToString()
@@ -35,30 +35,30 @@ Public Class FormVerProductos
             End Using
         End Using
 
-        ' Mostrar los productos en el DataGridView
+        ' Muestra los productos en el DataGridView
         DataGridView1.DataSource = Productos
     End Sub
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
 
 
-        ' Verificar si se ha seleccionado un producto en el DataGridView
+        ' Verifica si se ha seleccionado un producto en el DataGridView<<<<<<<
         If DataGridView1.SelectedRows.Count > 0 Then
 
-            ' Obtener el índice de la fila seleccionada
+            ' Obtiene el índice de la fila seleccionada<<<<<<
             Dim rowIndex As Integer = DataGridView1.SelectedRows(0).Index
 
-            ' Verificar si el índice es válido
+            ' Verifica si el índice es válido<<<<<<<
             If rowIndex >= 0 AndAlso rowIndex < Productos.Count Then
-                ' Obtener el producto seleccionado
+                ' Obtiene el producto seleccionado<<<<<<<<
                 Dim productoSeleccionado As Producto = Productos(rowIndex)
 
-                ' Crear una instancia del formulario "FormModificarProducto" y pasar el producto seleccionado
+                ' Crea una instancia del formulario "FormModificarProducto" y pasar el producto seleccionado<<<<<<
                 Dim modificarForm As New FormModificarProducto(productoSeleccionado)
 
-                ' Mostrar el formulario "FormModificarProducto" en modo de diálogo
+                ' Muestra el formulario "FormModificarProducto" en modo de diálogo<<<<<<<
                 If modificarForm.ShowDialog() = DialogResult.OK Then
-                    ' Actualizar la información del producto en el DataGridView si es necesario
+                    ' Actualiza la información del producto en el DataGridView si es necesario.<<<<<<<
                     ActualizarDataGridView()
                     Dim reaparecer As New FormVerProductos()
                     Me.Close()
@@ -76,12 +76,12 @@ Public Class FormVerProductos
     Private Sub btnAgregarProducto_Click(sender As Object, e As EventArgs) Handles btnAgregarProducto.Click
 
 
-        ' Crear una instancia del formulario "FormAgregarProducto"
+        ' Crea una instancia del formulario "FormAgregarProducto"
         Dim agregarProductoForm As New FormAgregarProducto()
 
-        ' Mostrar el formulario "FormAgregarProducto" en modo de diálogo
+        ' Muestra el formulario "FormAgregarProducto" en modo de diálogo
         If agregarProductoForm.ShowDialog() = DialogResult.OK Then
-            ' El usuario ha agregado un nuevo producto, actualiza el DataGridView
+
             ActualizarDataGridView()
             Dim reaparecer As New FormVerProductos()
             Me.Close()
@@ -94,10 +94,10 @@ Public Class FormVerProductos
 
     'Me actualiza el DataGridView
     Private Sub ActualizarDataGridView()
-        ' Establecer la cadena de conexión
+        ' Establece la cadena de conexión a la base de datos<<<<<
         Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
 
-        ' Consulta SQL para obtener los productos
+        ' Consulta SQL para obtener los productos<<<<<<
         Dim query As String = "SELECT nombre, descripcion, categoria, precio, stock FROM productos"
 
         Using connection As New SqlConnection(connectionString)
@@ -105,13 +105,13 @@ Public Class FormVerProductos
 
             Using command As New SqlCommand(query, connection)
                 Using adapter As New SqlDataAdapter(command)
-                    ' Crear un nuevo DataTable para los datos de productos
+                    ' Crea un nuevo DataTable para los datos de productos<<<<<<
                     Dim dt As New DataTable()
 
-                    ' Llenar el DataTable con los datos de productos
+                    ' Llena el DataTable con los datos de productos<<<<<<
                     adapter.Fill(dt)
 
-                    ' Asignar el DataTable al DataGridView
+                    ' Asigna el DataTable al DataGridView<<<<<<<<<<
                     DataGridView1.DataSource = dt
                 End Using
             End Using
@@ -171,17 +171,38 @@ Public Class FormVerProductos
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim reaparecer As New FormVerProductos()
-        Me.Close()
-        reaparecer.ShowDialog()
+    Private Sub txtBuscador_TextChanged(sender As Object, e As EventArgs) Handles txtBuscador.TextChanged
+
+        ' Obtén el término de búsqueda ingresado por el usuario
+        Dim searchTerm As String = txtBuscador.Text
+
+        ' Construye la consulta SQL para buscar en la base de datos
+        Dim query As String = "SELECT * FROM productos WHERE nombre LIKE @searchTerm OR categoria LIKE @searchTerm OR precio LIKE @searchterm"
+
+        ' Establece la cadena de conexión (usando la que proporcionaste anteriormente)
+        Dim connectionString As String = "Data Source=DESKTOP-IIBHT0L\SQLEXPRESS;Initial Catalog=la_flor;Integrated Security=True"
+
+        ' Crea una conexión a la base de datos
+        Using connection As New SqlConnection(connectionString)
+            ' Abre la conexión
+            connection.Open()
+
+            ' Crea un adaptador de datos y un conjunto de datos para almacenar los resultados
+            Using adapter As New SqlDataAdapter(query, connection)
+                ' Configura los parámetros de la consulta
+                adapter.SelectCommand.Parameters.AddWithValue("@searchTerm", "%" & searchTerm & "%")
+
+                ' Crea un conjunto de datos para almacenar los resultados de la consulta
+                Dim dataset As New DataSet()
+
+                ' Llena el conjunto de datos con los resultados de la consulta
+                adapter.Fill(dataset)
+
+                ' Asigna el conjunto de datos como origen de datos del DataGridView
+                DataGridView1.DataSource = dataset.Tables(0)
+            End Using
+        End Using
 
 
     End Sub
-
-
-
-
-
-
 End Class

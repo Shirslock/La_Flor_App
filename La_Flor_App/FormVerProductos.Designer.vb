@@ -29,7 +29,8 @@ Partial Class FormVerProductos
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnAgregarProducto = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtBuscador = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -85,7 +86,7 @@ Partial Class FormVerProductos
         'btnSalir
         '
         Me.btnSalir.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnSalir.Location = New System.Drawing.Point(692, 387)
+        Me.btnSalir.Location = New System.Drawing.Point(703, 420)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(85, 27)
         Me.btnSalir.TabIndex = 4
@@ -102,15 +103,22 @@ Partial Class FormVerProductos
         Me.btnAgregarProducto.Text = "Agregar Producto"
         Me.btnAgregarProducto.UseVisualStyleBackColor = True
         '
-        'Button1
+        'txtBuscador
         '
-        Me.Button1.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button1.Location = New System.Drawing.Point(327, 387)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(85, 41)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Refrescar Grilla"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.txtBuscador.Location = New System.Drawing.Point(474, 386)
+        Me.txtBuscador.Name = "txtBuscador"
+        Me.txtBuscador.Size = New System.Drawing.Size(165, 23)
+        Me.txtBuscador.TabIndex = 7
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Comic Sans MS", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label2.Location = New System.Drawing.Point(388, 388)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(85, 16)
+        Me.Label2.TabIndex = 9
+        Me.Label2.Text = "Filtro Rapido:"
         '
         'FormVerProductos
         '
@@ -118,7 +126,8 @@ Partial Class FormVerProductos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.txtBuscador)
         Me.Controls.Add(Me.btnAgregarProducto)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnEliminar)
@@ -131,6 +140,7 @@ Partial Class FormVerProductos
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -141,5 +151,6 @@ Partial Class FormVerProductos
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnSalir As Button
     Friend WithEvents btnAgregarProducto As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents txtBuscador As TextBox
+    Friend WithEvents Label2 As Label
 End Class
